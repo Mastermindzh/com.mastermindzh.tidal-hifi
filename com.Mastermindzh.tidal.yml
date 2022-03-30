@@ -1,0 +1,50 @@
+app-id: com.Mastermindzh.tidal
+base: org.electronjs.Electron2.BaseApp
+base-version: "21.08"
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk 
+command: run.sh
+build-options:
+  cflags: -O2 -g
+  cxxflags: -O2 -g
+  env:
+    NPM_CONFIG_LOGLEVEL: info
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node16
+build-options:
+  append-path: /usr/lib/sdk/node16/bin
+
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=pulseaudio
+  - --share=network
+modules:
+  - name: tidal-hifi
+    buildsystem: simple
+    sources:
+      - type: git
+        url: https://github.com/Mastermindzh/tidal-hifi.git
+        dest: main
+      - generated-sources.json
+      - type: script
+        dest-filename: run.sh
+        commands:
+          - zypak-wrapper.sh /app/main/electron-sample-app "$@"
+    build-options:
+      env:
+        XDG_CACHE_HOME: /run/build/tidal-hifi/flatpak-node/cache
+        npm_config_cache: /run/build/tidal-hifi/flatpak-node/npm-cache
+        npm_config_nodedir: /usr/lib/sdk/node16
+        npm_config_offline: 'true'
+      build-args:
+        - --share=network
+    subdir: main
+    build-commands:
+      - npm install
+      - npm start       
+      - cp -a dist/linux*unpacked /app/main
+      # Install app wrapper
+      - install -Dm755 -t /app/bin/ ../run.sh
+
