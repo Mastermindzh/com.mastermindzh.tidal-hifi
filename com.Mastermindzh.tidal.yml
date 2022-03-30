@@ -10,16 +10,16 @@ build-options:
   cxxflags: -O2 -g
   env:
     NPM_CONFIG_LOGLEVEL: info
+  append-path: /usr/lib/sdk/node16/bin
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node16
-build-options:
-  append-path: /usr/lib/sdk/node16/bin
-
 finish-args:
   - --share=ipc
   - --socket=x11
   - --socket=pulseaudio
   - --share=network
+  - --device=dri 
+  - --talk-name=org.freedesktop.Notifications
 modules:
   - name: tidal-hifi
     buildsystem: simple
@@ -31,20 +31,27 @@ modules:
       - type: script
         dest-filename: run.sh
         commands:
-          - zypak-wrapper.sh /app/main/electron-sample-app "$@"
+          - zypak-wrapper.sh /app/main/tidal-hifi "$@"
+      - type: file 
+        path: com.Mastermindzh.tidal.desktop
+      - type: file 
+        path: com.Mastermindzh.tidal.appdata.xml
     build-options:
       env:
         XDG_CACHE_HOME: /run/build/tidal-hifi/flatpak-node/cache
         npm_config_cache: /run/build/tidal-hifi/flatpak-node/npm-cache
         npm_config_nodedir: /usr/lib/sdk/node16
-        npm_config_offline: 'true'
+        # npm_config_offline: 'true'
       build-args:
         - --share=network
     subdir: main
     build-commands:
       - npm install
-      - npm start       
+      - . ../flatpak-node/electron-builder-arch-args.sh
+      - npm run build -- --linux tar.gz
       - cp -a dist/linux*unpacked /app/main
       # Install app wrapper
       - install -Dm755 -t /app/bin/ ../run.sh
-
+      - install -Dm755 -t /app/share/metainfo ../com.Mastermindzh.tidal.appdata.xml
+      - install -Dm755 -t /app/share/icons/hicolor/786x786/apps/com.Mastermindzh.tidal build/icon.png
+      - install -Dm755 -t /app/share/applications ../com.Mastermindzh.tidal.desktop

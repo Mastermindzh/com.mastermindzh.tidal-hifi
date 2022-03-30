@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.Mastermindzh.tidal</id>
+  
+  <name>tidal-hifi</name>
+  <summary>The web version of listen.tidal.com running in electron with hifi support thanks to widevine.</summary>
+  
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  
+  <description>
+    <p>
+      The web version of listen.tidal.com running in electron with hifi support thanks to widevine.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">com.Mastermindzh.tidal.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://github.com/Mastermindzh/tidal-hifi/blob/master/docs/preview.png</image>
+    </screenshot>
+  </screenshots>
+</component>
