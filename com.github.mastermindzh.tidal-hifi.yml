@@ -21,7 +21,7 @@ finish-args:
   - --device=dri 
   - --talk-name=org.freedesktop.Notifications
   - --filesystem=xdg-run/app/com.discordapp.Discord:create      
-  - --own-name=org.mpris.MediaPlayer2.tidal        
+  - --own-name=org.mpris.MediaPlayer2.tidal-hifi        
   - --talk-name=org.freedesktop.Notifications
 modules:
   - name: tidal-hifi
