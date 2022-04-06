@@ -4,4 +4,4 @@ store dependencies into generate-sources.json, doesn't fully work, so we do an o
 
 ## building
 
-```flatpak-builder --user --force-clean --install build com.Mastermindzh.tidal.yml``` build and install
+```flatpak-builder --user --force-clean --install build com.github.mastermindzh.tidal-hifi.yml``` build and install
