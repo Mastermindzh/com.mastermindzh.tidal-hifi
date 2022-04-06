@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>com.Mastermindzh.tidal</id>
+  <id>com.github.mastermindzh.tidal-hifi</id>
   
   <name>tidal-hifi</name>
   <summary>The web version of listen.tidal.com running in electron with hifi support thanks to widevine.</summary>
@@ -14,10 +14,10 @@
     </p>
   </description>
   
-  <launchable type="desktop-id">com.Mastermindzh.tidal.desktop</launchable>
+  <launchable type="desktop-id">com.github.mastermindzh.tidal-hifi.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://github.com/Mastermindzh/tidal-hifi/blob/master/docs/preview.png</image>
+      <image>https://github.com.github.mastermindzh.tidal-hifi-hifi/blob/master/docs/preview.png</image>
     </screenshot>
   </screenshots>
 </component>
