@@ -1,0 +1,26 @@
+{
+  "name": "tidal-flatpak",
+  "version": "2.8.0",
+  "description": "The web version of listen.tidal.com running in electron with hifi support thanks to widevine.",
+  "main": "com.mastermindzh.tidal-hifi.yml",
+  "scripts": {
+    "postinstall": "git submodule update --recursive --init tidal-hifi-git/",
+    "generate-sources":"python3 flatpak-node-generator.py npm --xdg-layout --no-aiohttp -r  --electron-node-headers  tidal-hifi-git/package-lock.json",
+    "build": "flatpak-builder build com.mastermindzh.tidal-hifi.yml",
+    "build-and-install": "flatpak-builder --user --force-clean --install build com.mastermindzh.tidal-hifi.yml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mastermindzh/tidal-flatpak.git"
+  },
+  "keywords": [
+    "tidal-hifi",
+    "tidal-flatpak"
+  ],
+  "author": "Rick van Lieshout <info@rickvanlieshout.com> (http://rickvanlieshout.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mastermindzh/tidal-flatpak/issues"
+  },
+  "homepage": "https://github.com/Mastermindzh/tidal-flatpak#readme"
+}

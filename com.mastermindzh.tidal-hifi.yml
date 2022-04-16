@@ -1,4 +1,4 @@
-app-id: com.github.mastermindzh.tidal-hifi
+app-id: com.mastermindzh.tidal-hifi
 base: org.electronjs.Electron2.BaseApp
 base-version: "21.08"
 runtime: org.freedesktop.Platform
@@ -28,18 +28,18 @@ modules:
     buildsystem: simple
     sources:
       - type: git
-        url: https://github.com/Mastermindzh/tidal-hifi.git       
+        url: https://github.com/Mastermindzh/tidal-hifi       
         dest: main
       - generated-sources.json
       - type: file
         path: run.sh
       - type: file 
-        path: com.github.mastermindzh.tidal-hifi.desktop
+        path: com.mastermindzh.tidal-hifi.desktop
       - type: file 
-        path: com.github.mastermindzh.tidal-hifi.appdata.xml
+        path: com.mastermindzh.tidal-hifi.appdata.xml
       - type: file 
         path: icon.png
-        dest-filename: com.github.mastermindzh.tidal-hifi.png
+        dest-filename: com.mastermindzh.tidal-hifi.png
     build-options:
       env:
         XDG_CACHE_HOME: /run/build/tidal-hifi/flatpak-node/cache
@@ -56,6 +56,6 @@ modules:
       - cp -a dist/linux*unpacked /app/main
       # Install app wrapper
       - install -Dm755 -t /app/bin/ ../run.sh
-      - install -Dm755 -t /app/share/metainfo ../com.github.mastermindzh.tidal-hifi.appdata.xml
-      - install -Dm755 -t /app/share/icons/hicolor/512x512/apps/ ../com.github.mastermindzh.tidal-hifi.png
-      - install -Dm755 -t /app/share/applications ../com.github.mastermindzh.tidal-hifi.desktop
+      - install -Dm755 -t /app/share/metainfo ../com.mastermindzh.tidal-hifi.appdata.xml
+      - install -Dm755 -t /app/share/icons/hicolor/512x512/apps/ ../com.mastermindzh.tidal-hifi.png
+      - install -Dm755 -t /app/share/applications ../com.mastermindzh.tidal-hifi.desktop

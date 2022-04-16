@@ -1,0 +1,3 @@
+[submodule "tidal-hifi-git"]
+	path = tidal-hifi-git
+	url = git@github.com:Mastermindzh/tidal-hifi.git
