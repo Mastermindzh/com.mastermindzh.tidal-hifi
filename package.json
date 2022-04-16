@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "git submodule update --recursive --init tidal-hifi-git/",
     "generate-sources":"python3 flatpak-node-generator.py npm --xdg-layout --no-aiohttp -r  --electron-node-headers  tidal-hifi-git/package-lock.json",
-    "build": "flatpak-builder build com.mastermindzh.tidal-hifi.yml",
+    "build": "flatpak-builder --user --force-clean build com.mastermindzh.tidal-hifi.yml",
     "build-and-install": "flatpak-builder --user --force-clean --install build com.mastermindzh.tidal-hifi.yml"
   },
   "repository": {
